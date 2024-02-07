@@ -11,6 +11,20 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
+  {
+    "folke/which-key.nvim",
+    config = function(_, opts)
+      -- default config function's stuff
+      dofile(vim.g.base46_cache .. "whichkey")
+      require("which-key").setup(opts)
+
+      -- custom stuff
+      require("which-key").register({
+        x = { name = "prefix" },
+      }, { prefix = "<leader>" })
+    end,
+  },
+
   -- override plugin configs
   {
     "williamboman/mason.nvim",
